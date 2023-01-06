@@ -1,0 +1,102 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    padding: 0;
+    margin: 0;
+    font-family: roboto, sans-serif;
+    text-align: center;
+    background-color: blue;
+}
+
+h1 {
+    padding: 0;
+    margin: 0;
+}
+
+header {
+    display: flex;
+    padding: 20px;
+    align-items: center;
+    background-color: coral;
+    height: 100px;
+    width: 100%;
+}
+
+.cards {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.card {
+    border-radius: 10px;
+    width: 200px;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: rgba(149, 157, 165, 0.2) 0px 8px 24px;
+}
+
+.card-img {
+    border-radius: 10px 10px 0 0;
+    background-size: cover;
+    background-position: center;
+    background-image: url("http://placekitten.com/200/300");
+    height: 200px;
+    width: 100%;
+}
+
+.card-body {
+    padding: 10px 20px;
+}
+
+.card-body h2 {
+    margin: 10px 0px;
+}
+
+.card-title{
+    font-family: Arial, Helvetica, sans-serif;
+    color: brown;
+    text-align: center;
+}
+
+.card-button {
+    border: none;
+    border-radius: 10px;
+    height: 40px;
+    background-color: rgb(232, 173, 147);
+    width: 100%;
+    color: rgb(37, 4, 1);
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.card-button:hover {
+    background-color: rgb(176, 176, 176);
+}
+
+.healAll {
+    width: 50%;
+    background-color: coral;
+    margin-bottom: 50px;
+    color: white;
+    height: 60px;
+    font-size: 1.5rem;
+}
+
+.health-bar {
+    width: 100%;
+    height: 20px;
+    border-radius: 20px;
+    border: solid 1px grey;
+}
+
+.current-health-bar {
+    transition: width 0.5s linear;
+    height: 20px;
+    background-color: blueviolet;
+    border-radius: 20px;
+}
