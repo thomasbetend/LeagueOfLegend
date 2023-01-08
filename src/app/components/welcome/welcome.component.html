@@ -1,0 +1,10 @@
+<app-header></app-header>
+<form
+    [formGroup]="userForm"
+    (ngSubmit)="submitUser()">
+<label for="username">Pour jouer, entrez votre pseudo : </label>
+<input type="text" id="username" formControlName="username">
+
+<button type="submit" class="mdc-button">Valider</button>
+
+</form>

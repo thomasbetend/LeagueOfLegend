@@ -1,0 +1,18 @@
+* {
+}
+
+.title {
+    font-size: 5rem;
+    color: var(--color1);
+    font-family: 'Pirata One', cursive;
+    text-align: center;
+    background-color: rgb(61, 61, 61);
+}
+
+p {
+    font-size: 1.5rem;
+    color: white;
+    font-family: 'Pirata One', cursive;
+    text-align: center;
+    background-color: var(--color1);
+}

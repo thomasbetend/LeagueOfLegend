@@ -1,0 +1,23 @@
+<app-header></app-header>
+<app-username-item></app-username-item>
+<div class="body">
+    <div class="team1">
+        <div class="titleTeam">Team 1</div>
+        <div class="sub" *ngIf="isTeam1Touched">
+            You've lost one team mate! Do you want to add a new team member?
+        </div>
+        <div class="playersTeam1">
+            <div class="cards" *ngFor="let hero of team1; let i = index">
+                <app-hero [hero]="hero" (onDelete)="onDeleteHeroTeam1($event, i)"></app-hero>
+            </div>
+        </div>
+    </div>
+    <div class="team2">
+        <div class="titleTeam">Team 2</div>
+        <div class="playersTeam2">
+            <div class="cards" *ngFor="let hero of team2; let i = index">
+                <app-hero [hero]="hero" (onDelete)="onDeleteHeroTeam2($event, i)"></app-hero>
+            </div>
+        </div>
+    </div>
+</div>

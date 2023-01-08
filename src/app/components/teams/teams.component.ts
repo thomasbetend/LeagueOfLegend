@@ -1,15 +1,14 @@
-import { Component, OnInit } from '@angular/core';
-import { HeroModel } from './models/hero.model';
-import { HeroesService } from './services/heroes.service';
-import { Hero } from './typings';
+import { Component } from '@angular/core';
+import { HeroModel } from 'src/app/models/hero.model';
+import { HeroesService } from 'src/app/services/heroes.service';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  selector: 'app-teams',
+  templateUrl: './teams.component.html',
+  styleUrls: ['./teams.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'LeagueOfLegends-TestCFM';
+export class TeamsComponent {
+
   heroes?: any;
   hero?: HeroModel;
   hero1?: any;
@@ -17,6 +16,7 @@ export class AppComponent implements OnInit {
   team2?: any[];
   teamSub?: any[];
   isTeam1Touched?: boolean;
+  username: string = '';
 
   constructor(private heroesService: HeroesService) {
   }
@@ -44,9 +44,7 @@ export class AppComponent implements OnInit {
       } 
   */
 
-      console.log(this.team1);
     });
-
   }
 
   onDeleteHeroTeam1(name: any, index: number) {

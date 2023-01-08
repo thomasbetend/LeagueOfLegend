@@ -15,4 +15,12 @@ export class HeroesService {
   getHeroes() {
     return this.http.get<Hero>(this.SERVER_URL);
   };
+
+  getHeroById(id: number) {
+    return this.http.get<Hero>(`${this.SERVER_URL}/${id}`);
+  };
+
+  deleteHeroes(id: number) {
+    return this.http.delete(`${this.SERVER_URL}/${id}`);
+  }
 }

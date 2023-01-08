@@ -1,0 +1,28 @@
+input {
+    background-color: white;
+    border: white;
+    border-radius: 3px;
+    height: 35px;
+    width: 376px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    text-align: center;
+    font-size: 1.3rem;
+}
+
+label {
+    color:white;
+    font-family: 'Pirata One', cursive;
+    font-size: 2rem;
+}
+
+button {
+    background-color: white;
+}
+
+form {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}

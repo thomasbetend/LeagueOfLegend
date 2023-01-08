@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, EventEmitter, Input, Output } from '@angular/core';
 import { HeroesService } from 'src/app/services/heroes.service';
 
 @Component({
@@ -8,6 +8,7 @@ import { HeroesService } from 'src/app/services/heroes.service';
 })
 export class HeroComponent {
   @Input() hero:any;
+  @Output() onDelete = new EventEmitter<string>();
   imageUrl = '../../assets/images/';
 
   constructor(private heroesService: HeroesService) {
@@ -16,8 +17,7 @@ export class HeroComponent {
   ngOnInit(): void {
   }
 
-  onDelete() {
-    
+  onDeleteClick() {
+    this.onDelete.emit(this.hero.name);
   }
-
 }

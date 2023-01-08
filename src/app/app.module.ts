@@ -7,18 +7,28 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { DataService } from './data.service';
 import { HeroComponent } from './components/hero/hero.component';
+import { HeaderComponent } from './components/header/header.component';
+import { WelcomeComponent } from './components/welcome/welcome.component';
+import { ReactiveFormsModule } from '@angular/forms';
+import { TeamsComponent } from './components/teams/teams.component';
+import { UsernameItemComponent } from './components/username-item/username-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    HeroComponent
+    HeroComponent,
+    HeaderComponent,
+    WelcomeComponent,
+    TeamsComponent,
+    UsernameItemComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     InMemoryWebApiModule.forRoot(DataService, { dataEncapsulation: true }),
     HttpClientInMemoryWebApiModule.forRoot(DataService),
-    HttpClientModule
+    HttpClientModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
