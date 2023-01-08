@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { HeroModel } from 'src/app/models/hero.model';
 import { HeroesService } from 'src/app/services/heroes.service';
 
@@ -16,9 +17,16 @@ export class TeamsComponent {
   team2?: any[];
   teamSub?: any[];
   isTeam1Touched?: boolean;
+  isTeam2Touched?: boolean;
   username: string = '';
+  errorSelectHero1?: boolean;
+  errorSelectHero2?: boolean;
+  heroSelectForm: FormGroup;
 
-  constructor(private heroesService: HeroesService) {
+  constructor(private formBuilder: FormBuilder, private heroesService: HeroesService) {
+    this.heroSelectForm = this.formBuilder.group({
+      heroName: ['', Validators.required],
+    });
   }
 
   ngOnInit(): void {
@@ -47,6 +55,16 @@ export class TeamsComponent {
     });
   }
 
+  changeHero(e: any) {
+    this.heroName?.setValue(e.target.value, {
+      onlySelf: true,
+    });
+  }
+
+  get heroName() {
+    return this.heroSelectForm.get('heroName');
+  }
+
   onDeleteHeroTeam1(name: any, index: number) {
     console.log(`Deleting hero : ${name}`);
     this.team1?.splice(index, 1);
@@ -56,5 +74,25 @@ export class TeamsComponent {
   onDeleteHeroTeam2(name: any, index: number) {
     console.log(`Deleting hero : ${name}`);
     this.team2?.splice(index, 1);
+    this.isTeam2Touched = true;
+  }
+
+  addHeroOnTeam1() {
+    if (!this.heroSelectForm.valid) {
+      this.errorSelectHero1 = true;
+      return;}
+
+    this.team1?.unshift(this.heroSelectForm.value["heroName"]);
+    //if (this.team1.length >= 5) this.isTeam1Touched = false;
+  }
+
+
+  addHeroOnTeam2() {
+    if (!this.heroSelectForm.valid) {
+      this.errorSelectHero2 = true;
+      return;}
+
+    this.team2?.unshift(this.heroSelectForm.value["heroName"]);
+    //if (this.team2.length >= 5) this.isTeam2Touched = false;
   }
 }

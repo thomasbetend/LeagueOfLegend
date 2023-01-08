@@ -12,7 +12,6 @@ export class WelcomeComponent {
 
   userForm: FormGroup;
 
-
   constructor(private http: HttpClient, private router: Router, private formBuilder: FormBuilder){
     this.userForm = this.formBuilder.group({
       username: ['', Validators.required],

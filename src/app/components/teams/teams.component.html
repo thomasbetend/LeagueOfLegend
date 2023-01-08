@@ -4,7 +4,21 @@
     <div class="team1">
         <div class="titleTeam">Team 1</div>
         <div class="sub" *ngIf="isTeam1Touched">
-            You've lost one team mate! Do you want to add a new team member?
+            <p class="message">You've lost a team mate! Do you want to add one?</p> 
+            <form class="custom-form" [formGroup]="heroSelectForm" (ngSubmit)="addHeroOnTeam1()">
+                <select
+                    class="custom-select"
+                    (change)="changeHero($event)"
+                    formControlName="heroName"
+                    >
+                    <option value="">Choose your hero</option>
+                    <option *ngFor="let hero of teamSub" [ngValue]="hero">
+                        {{ hero.name }}
+                    </option>
+                </select>
+                <button type="submit" class="mdc-button">Add</button>
+            </form>
+            <div class="error" *ngIf="errorSelectHero1">Please make a choice</div>
         </div>
         <div class="playersTeam1">
             <div class="cards" *ngFor="let hero of team1; let i = index">
@@ -14,6 +28,23 @@
     </div>
     <div class="team2">
         <div class="titleTeam">Team 2</div>
+        <div class="sub" *ngIf="isTeam2Touched">
+            <p class="message">You've lost a team mate! Do you want to add one?</p> 
+            <form class="custom-form" [formGroup]="heroSelectForm" (ngSubmit)="addHeroOnTeam2()">
+                <select
+                    class="custom-select"
+                    (change)="changeHero($event)"
+                    formControlName="heroName"
+                    >
+                    <option value="">Choose your hero</option>
+                    <option *ngFor="let hero of teamSub" [ngValue]="hero">
+                        {{ hero.name }}
+                    </option>
+                </select>
+                <button type="submit" class="mdc-button">Add</button>
+            </form>
+            <div class="error" *ngIf="errorSelectHero2">Please make a choice</div>
+        </div>
         <div class="playersTeam2">
             <div class="cards" *ngFor="let hero of team2; let i = index">
                 <app-hero [hero]="hero" (onDelete)="onDeleteHeroTeam2($event, i)"></app-hero>
