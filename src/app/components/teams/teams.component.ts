@@ -15,7 +15,7 @@ export class TeamsComponent {
   hero1?: any;
   team1?: any[];
   team2?: any[];
-  teamSub?: any[];
+  team1Sub?: any[];
   isTeam1Touched?: boolean;
   isTeam2Touched?: boolean;
   username: string = '';
@@ -32,25 +32,23 @@ export class TeamsComponent {
   ngOnInit(): void {
     this.heroesService.getHeroes().subscribe((data)=>{
       this.heroes = data;
+      this.team1 = [];
+      this.team2 = [];
+      this.team1Sub = [];
 
-      this.team1 = [
-        this.heroes[0], this.heroes[1], this.heroes[2], this.heroes[3], this.heroes[4],
-      ];
-
-      this.team2 = [
-        this.heroes[5], this.heroes[6], this.heroes[7], this.heroes[8], this.heroes[9],
-      ];
-
-      this.teamSub = [
-        this.heroes[10], this.heroes[11], this.heroes[12], this.heroes[13], this.heroes[14],
-      ];
-
-  /*     
-      this doesn't work
       for (let i = 0; i < 5; i ++){
           this.team1?.push(this.heroes[i])
-      } 
-  */
+      }
+
+      for (let i = 5; i < 10; i ++){
+        this.team2?.push(this.heroes[i])
+      }
+
+      for (let i = 10; i < 15; i ++){
+        this.team1Sub?.push(this.heroes[i])
+      }
+
+      console.log(this.team1);
 
     });
   }
@@ -83,7 +81,8 @@ export class TeamsComponent {
       return;}
 
     this.team1?.unshift(this.heroSelectForm.value["heroName"]);
-    //if (this.team1.length >= 5) this.isTeam1Touched = false;
+    if (!this.team1) return;
+    if (this.team1.length >= 5) this.isTeam1Touched = false;
   }
 
 
@@ -93,6 +92,7 @@ export class TeamsComponent {
       return;}
 
     this.team2?.unshift(this.heroSelectForm.value["heroName"]);
-    //if (this.team2.length >= 5) this.isTeam2Touched = false;
+    if (!this.team2) return;
+    if (this.team2.length >= 5) this.isTeam2Touched = false;
   }
 }
