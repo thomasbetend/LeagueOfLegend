@@ -4,4 +4,5 @@ export interface Hero {
     name: string,
     tags: string[],
     title: string,
+    image: string,
 }

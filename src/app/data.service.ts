@@ -172,6 +172,59 @@ constructor() { }
                 name: "Darius",
                 image: "darius.jpeg"
             },
+            {
+                tags: [
+                    "Mage"
+                ],
+                title: "the Deathsinger",
+                id: 16,
+                key: "Karthus",
+                name: "Karthus",
+                image: "karthus.jpeg"
+            },
+            {
+                tags: [
+                    "Fighter",
+                    "Marksman"
+                ],
+                title: "the Defender of Tomorrow",
+                id: 17,
+                key: "Jayce",
+                name: "Jayce",
+                image: "jayce.jpeg"
+            },
+            {
+                tags: [
+                    "Support",
+                    "Fighter"
+                ],
+                title: "the Yeti Rider",
+                id: 18,
+                key: "Nunu",
+                name: "Nunu",
+                image: "nunu.jpeg"
+            },
+            {
+                tags: [
+                    "Fighter",
+                    "Tank"
+                ],
+                title: "the Troll King",
+                id: 19,
+                key: "Trundle",
+                name: "Trundle",
+                image: "trundle.jpeg"
+            },
+            {
+                tags: [
+                    "Marksman"
+                ],
+                title: "the Outlaw",
+                id: 20,
+                key: "Graves",
+                name: "Graves",
+                image: "graves.jpeg"
+            },
         ]
         
         return {data};

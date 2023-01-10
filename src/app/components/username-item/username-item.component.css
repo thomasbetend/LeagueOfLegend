@@ -1,8 +1,9 @@
 p {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     color: white;
     font-family: 'Pirata One', cursive;
     text-align: center;
+    opacity: 40%;
 }
 
 .item {
@@ -13,7 +14,7 @@ p {
 }
 
 button {
-    background-color: white;
     width: 15%;
-    opacity: 50%;
+    font-size: 1.1rem;
+    height: 40px;
 }

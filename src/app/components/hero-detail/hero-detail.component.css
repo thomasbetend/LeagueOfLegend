@@ -1,5 +1,14 @@
+.detail {
+    text-align: center;
+}
+
+h1 {
+    font-family: 'Pirata One', cursive, Arial, Helvetica, sans-serif;
+    color: white;
+    font-size: 3rem;;
+}
+
 .cards {
-    margin-top: 10px;
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
@@ -8,7 +17,7 @@
 
 .card {
     border-radius: 10px;
-    width: 200px;
+    width: 50%;
     margin: 20px;
     display: flex;
     flex-direction: column;
@@ -20,9 +29,8 @@
     border-radius: 10px 10px 0 0;
     background-size: cover;
     background-position: center;
-    height: 200px;
+    height: 400px;
     width: 100%;
-    cursor: pointer;
 }
 
 .card-body {
@@ -49,7 +57,6 @@
     color: rgb(37, 4, 1);
     margin-top: 10px;
     cursor: pointer;
-    font-weight: 800;
 }
 
 .card-button:hover {
@@ -78,4 +85,19 @@
     height: 20px;
     background-color: blueviolet;
     border-radius: 20px;
+}
+
+.title, .tags {
+    color: white;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.tags {
+    margin-top : 20px;
+}
+
+.titleDetail, .tagDetail {
+    color: var(--color1);
+    font-family: 'Pirata One', cursive, Arial, Helvetica, sans-serif;
+    font-size: 1.4rem;
 }

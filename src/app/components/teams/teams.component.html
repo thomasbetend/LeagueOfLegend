@@ -4,7 +4,7 @@
     <div class="team1">
         <div class="titleTeam">Team 1</div>
         <div class="sub" *ngIf="isTeam1Touched">
-            <p class="message">You've lost a team mate! Do you want to add one?</p> 
+            <p class="message">You've lost a team mate! Do you want to add one?<br>(5 players max per team)</p> 
             <form class="custom-form" [formGroup]="heroSelectForm" (ngSubmit)="addHeroOnTeam1()">
                 <select
                     class="custom-select"
@@ -20,9 +20,12 @@
             </form>
             <div class="error" *ngIf="errorSelectHero1">Please make a choice</div>
         </div>
+        <div class="loose-message" *ngIf="looseMessage">
+            You Loose !!!
+        </div>
         <div class="playersTeam1">
             <div class="cards" *ngFor="let hero of team1; let i = index">
-                <app-hero [hero]="hero" (onDelete)="onDeleteHeroTeam1($event, i)"></app-hero>
+                <app-hero [hero]="hero" (onDelete)="onKillHeroTeam1($event, i)" [routerLink]="['/hero', hero.name]"></app-hero>
             </div>
         </div>
     </div>
@@ -37,7 +40,7 @@
                     formControlName="heroName"
                     >
                     <option value="">Choose your hero</option>
-                    <option *ngFor="let hero of team1Sub" [ngValue]="hero">
+                    <option *ngFor="let hero of team2Sub" [ngValue]="hero">
                         {{ hero.name }}
                     </option>
                 </select>
@@ -47,7 +50,7 @@
         </div>
         <div class="playersTeam2">
             <div class="cards" *ngFor="let hero of team2; let i = index">
-                <app-hero [hero]="hero" (onDelete)="onDeleteHeroTeam2($event, i)"></app-hero>
+                <app-hero [hero]="hero" (onDelete)="onKillHeroTeam2($event, i)" [routerLink]="['/hero', hero.name]"></app-hero>
             </div>
         </div>
     </div>

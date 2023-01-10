@@ -2,9 +2,9 @@
 <form
     [formGroup]="userForm"
     (ngSubmit)="submitUser()">
-<label for="username">Pour jouer, entrez votre pseudo : </label>
-<input type="text" id="username" formControlName="username">
+    
+    <label for="username">To start the game, enter your pseudo : </label>
+    <input type="text" id="username" formControlName="username">
 
-<button type="submit" class="mdc-button">Valider</button>
-
+    <button type="submit" class="mdc-button">Play</button>
 </form>

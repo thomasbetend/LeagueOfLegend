@@ -60,6 +60,7 @@ button {
 
 .message {
     font-family: Arial, Helvetica, sans-serif;
+    text-align: center;
 }
 
 .custom-select {
@@ -73,4 +74,8 @@ button {
 .custom-form {
     display: flex;
     flex-direction: column;
+}
+
+.loose-message {
+    color: white;
 }

@@ -12,6 +12,7 @@ import { WelcomeComponent } from './components/welcome/welcome.component';
 import { ReactiveFormsModule } from '@angular/forms';
 import { TeamsComponent } from './components/teams/teams.component';
 import { UsernameItemComponent } from './components/username-item/username-item.component';
+import { HeroDetailComponent } from './components/hero-detail/hero-detail.component';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { UsernameItemComponent } from './components/username-item/username-item.
     WelcomeComponent,
     TeamsComponent,
     UsernameItemComponent,
+    HeroDetailComponent,
   ],
   imports: [
     BrowserModule,

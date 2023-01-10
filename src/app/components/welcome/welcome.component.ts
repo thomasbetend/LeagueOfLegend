@@ -21,11 +21,7 @@ export class WelcomeComponent {
   submitUser() {
     console.log(this.userForm.value.username);
     localStorage.setItem('username', this.userForm.value.username);
-    this.router.navigate(['/teamsGame']);
+    this.router.navigate(['/game']);
   }
-
-  /* getUsername(): FormControl {
-    return this.userForm.get('username') as FormControl;
-  } */
 
 }
