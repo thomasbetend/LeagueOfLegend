@@ -1,56 +1,65 @@
 <app-header></app-header>
-<app-username-item></app-username-item>
+<app-username-item *ngIf="!looseMessageTeam1 && !looseMessageTeam2"></app-username-item>
 <div class="body">
-    <div class="team1">
-        <div class="titleTeam">Team 1</div>
-        <div class="sub" *ngIf="isTeam1Touched">
-            <p class="message">You've lost a team mate! Do you want to add one?<br>(5 players max per team)</p> 
-            <form class="custom-form" [formGroup]="heroSelectForm" (ngSubmit)="addHeroOnTeam1()">
-                <select
-                    class="custom-select"
-                    (change)="changeHero($event)"
-                    formControlName="heroName"
-                    >
-                    <option value="">Choose your hero</option>
-                    <option *ngFor="let hero of team1Sub" [ngValue]="hero">
-                        {{ hero.name }}
-                    </option>
-                </select>
-                <button type="submit" class="mdc-button">Add</button>
-            </form>
-            <div class="error" *ngIf="errorSelectHero1">Please make a choice</div>
-        </div>
-        <div class="loose-message" *ngIf="looseMessage">
-            You Loose !!!
-        </div>
-        <div class="playersTeam1">
-            <div class="cards" *ngFor="let hero of team1; let i = index">
-                <app-hero [hero]="hero" (onDelete)="onKillHeroTeam1($event, i)" [routerLink]="['/hero', hero.name]"></app-hero>
+    <div class="loose-message" *ngIf="looseMessageTeam1">
+        <span class="victory">Team 1, You Loose... Congratulations Team 2!</span>
+        <button class="mdc-button" (click)="newGame()">Play again</button>
+    </div>
+    <div class="loose-message" *ngIf="looseMessageTeam2">
+        <span class="victory">Team 2, You Loose... Congratulations Team 1!</span>
+        <button class="mdc-button" (click)="newGame()">Play again</button>
+    </div>
+    <div class="teams" *ngIf="!looseMessageTeam1 && !looseMessageTeam2">
+        <div class="team1">
+            <div class="titleTeam">Team 1</div>
+            <div class="no-more-sub message" *ngIf="noMoreSubsTeam1">No more subs</div>
+            <div class="sub" *ngIf="isTeam1Touched">
+                <p class="message">You've lost a team mate! Do you want to add one?<br><span class="players-max">(5 players max)</span></p> 
+                <form class="custom-form" [formGroup]="heroSelectForm" (ngSubmit)="addHeroOnTeam1()">
+                    <select
+                        class="custom-select"
+                        (change)="changeHero($event)"
+                        formControlName="heroName"
+                        >
+                        <option value="">Choose your sub</option>
+                        <option *ngFor="let hero of team1Sub" [ngValue]="hero">
+                            {{ hero.name }}
+                        </option>
+                    </select>
+                    <button type="submit" class="mdc-button">Add</button>
+                </form>
+                <div class="error" *ngIf="errorSelectHero1">Please make a choice</div>
+            </div>
+            <div class="playersTeam1">
+                <div class="cards" *ngFor="let hero of team1; let i = index">
+                    <app-hero [hero]="hero" (onDelete)="onKillHeroTeam1($event, i)" [routerLink]="['/hero', hero.name]"></app-hero>
+                </div>
             </div>
         </div>
-    </div>
-    <div class="team2">
-        <div class="titleTeam">Team 2</div>
-        <div class="sub" *ngIf="isTeam2Touched">
-            <p class="message">You've lost a team mate! Do you want to add one?</p> 
-            <form class="custom-form" [formGroup]="heroSelectForm" (ngSubmit)="addHeroOnTeam2()">
-                <select
-                    class="custom-select"
-                    (change)="changeHero($event)"
-                    formControlName="heroName"
-                    >
-                    <option value="">Choose your hero</option>
-                    <option *ngFor="let hero of team2Sub" [ngValue]="hero">
-                        {{ hero.name }}
-                    </option>
-                </select>
-                <button type="submit" class="mdc-button">Add</button>
-            </form>
-            <div class="error" *ngIf="errorSelectHero2">Please make a choice</div>
-        </div>
-        <div class="playersTeam2">
-            <div class="cards" *ngFor="let hero of team2; let i = index">
-                <app-hero [hero]="hero" (onDelete)="onKillHeroTeam2($event, i)" [routerLink]="['/hero', hero.name]"></app-hero>
+        <div class="team2">
+            <div class="titleTeam">Team 2</div>
+            <div class="no-more-sub message" *ngIf="noMoreSubsTeam2">No more subs</div>
+            <div class="sub" *ngIf="isTeam2Touched">
+                <p class="message">You've lost a team mate! Do you want to add one?<br><span class="players-max">(5 players max)</span></p> 
+                <form class="custom-form" [formGroup]="heroSelectForm" (ngSubmit)="addHeroOnTeam2()">
+                    <select
+                        class="custom-select"
+                        (change)="changeHero($event)"
+                        formControlName="heroName"
+                        >
+                        <option value="">Choose your sub</option>
+                        <option *ngFor="let hero of team2Sub" [ngValue]="hero">
+                            {{ hero.name }}
+                        </option>
+                    </select>
+                    <button type="submit" class="mdc-button">Add</button>
+                </form>
+                <div class="error" *ngIf="errorSelectHero2">Please make a choice</div>
+            </div>
+            <div class="playersTeam2">
+                <div class="cards" *ngFor="let hero of team2; let i = index">
+                    <app-hero [hero]="hero" (onDelete)="onKillHeroTeam2($event, i)" [routerLink]="['/hero', hero.name]"></app-hero>
+                </div>
             </div>
         </div>
     </div>

@@ -3,6 +3,28 @@
     justify-content: center;
 }
 
+.loose-message {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.victory {
+    font-size: 2.4rem;
+    font-family: 'Pirata One', cursive;
+    margin-top: 20%;
+}
+
+.teams {
+    display: flex;
+    justify-content: center;
+}
+
+.players-max {
+    text-transform: italic;
+    color: var(--color1);
+}
+
 .team1, .team2 {
     display: flex;
     flex-direction: column;
@@ -30,7 +52,6 @@
     flex-wrap: wrap;
     justify-content: center;
     padding: 5%;
-    /* background-image: url("../assets/images/league_screen.jpeg"); */
 }
 
 .team1 {
@@ -46,10 +67,10 @@
 }
 
 button {
-    background-color: white;
     border: white;
     border-radius: 3px;
     margin-top: 5px;
+    font-size: 1.2rem;
 }
 
 .error {
@@ -65,10 +86,11 @@ button {
 
 .custom-select {
     color: white;
-    width: 161px;
-    height: 39px;
+    width: 200px;
+    height: 45px;
     border-radius: 3px;
     padding-left: 15px;
+    font-size: 1.1rem;
 }
 
 .custom-form {
@@ -78,4 +100,8 @@ button {
 
 .loose-message {
     color: white;
+}
+
+.no-more-sub {
+    color: var(--color1);
 }
