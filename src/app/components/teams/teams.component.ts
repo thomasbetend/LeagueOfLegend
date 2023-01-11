@@ -38,16 +38,8 @@ export class TeamsComponent {
   ngOnInit(): void {
 
     if (localStorage.getItem('team1')) {
-      this.team1 = JSON.parse(localStorage.getItem('team1')!);
-      this.team2 = JSON.parse(localStorage.getItem('team2')!);
-      this.team1Sub = JSON.parse(localStorage.getItem('team1Sub')!);
-      this.team2Sub = JSON.parse(localStorage.getItem('team2Sub')!);
-      this.errorSelectHero1 = JSON.parse(localStorage.getItem('errorSelectHero1')!);
-      this.errorSelectHero2 = JSON.parse(localStorage.getItem('errorSelectHero2')!);
-      this.isTeam1Touched = JSON.parse(localStorage.getItem('isTeam1Touched')!);
-      this.isTeam2Touched = JSON.parse(localStorage.getItem('isTeam2Touched')!);
-      this.looseMessageTeam1 = JSON.parse(localStorage.getItem('looseMessageTeam1')!);
-      this.looseMessageTeam2 = JSON.parse(localStorage.getItem('looseMessageTeam2')!);
+      this.getStorageTeam1();
+      this.getStorageTeam2();
       return;
     }
 
@@ -87,19 +79,8 @@ export class TeamsComponent {
       this.looseMessageTeam1 = false;
       this.looseMessageTeam2 = false;
 
-
-      localStorage.setItem('team1', JSON.stringify(this.team1));
-      localStorage.setItem('team1Sub', JSON.stringify(this.team1Sub));
-      localStorage.setItem('team2', JSON.stringify(this.team2));
-      localStorage.setItem('team2Sub', JSON.stringify(this.team2Sub));
-      localStorage.setItem('errorSelectHero1', JSON.stringify(false));
-      localStorage.setItem('errorSelectHero2', JSON.stringify(false));
-      localStorage.setItem('isTeam1Touched', JSON.stringify(false));
-      localStorage.setItem('isTeam2Touched', JSON.stringify(false));
-      localStorage.setItem('noMoreSubsTeam1', JSON.stringify(false));
-      localStorage.setItem('noMoreSubsTeam2', JSON.stringify(false));
-      localStorage.setItem('looseMessageTeam1', JSON.stringify(false));
-      localStorage.setItem('looseMessageTeam2', JSON.stringify(false));
+      this.setStorageTeam1();
+      this.setStorageTeam2();
     });
   }
 
@@ -113,16 +94,50 @@ export class TeamsComponent {
     return this.heroSelectForm.get('heroName');
   }
 
+  /* Using storage will enable to click on the image of a hero, to see the detail of this hero
+    and then to get back to the game without loosing the state of the game */
+
+  setStorageTeam1() {
+    localStorage.setItem('errorSelectHero1', JSON.stringify(this.errorSelectHero1));
+    localStorage.setItem('isTeam1Touched', JSON.stringify(this.isTeam1Touched));
+    localStorage.setItem('team1', JSON.stringify(this.team1));
+    localStorage.setItem('team1Sub', JSON.stringify(this.team1Sub));
+    localStorage.setItem('noMoreSubsTeam1', JSON.stringify(this.noMoreSubsTeam1));
+    localStorage.setItem('looseMessageTeam1', JSON.stringify(this.looseMessageTeam1));
+  }
+
+  setStorageTeam2() {
+    localStorage.setItem('errorSelectHero2', JSON.stringify(this.errorSelectHero1));
+    localStorage.setItem('isTeam2Touched', JSON.stringify(this.isTeam1Touched));
+    localStorage.setItem('team2', JSON.stringify(this.team2));
+    localStorage.setItem('team2Sub', JSON.stringify(this.team2Sub));
+    localStorage.setItem('noMoreSubsTeam2', JSON.stringify(this.noMoreSubsTeam2));
+    localStorage.setItem('looseMessageTeam2', JSON.stringify(this.looseMessageTeam2));
+  }
+
+  getStorageTeam1() {
+    this.team1 = JSON.parse(localStorage.getItem('team1')!);
+    this.team1Sub = JSON.parse(localStorage.getItem('team1Sub')!);
+    this.errorSelectHero1 = JSON.parse(localStorage.getItem('errorSelectHero1')!);
+    this.isTeam1Touched = JSON.parse(localStorage.getItem('isTeam1Touched')!);
+    this.noMoreSubsTeam1 = JSON.parse(localStorage.getItem('noMoreSubsTeam1')!);;
+    this.looseMessageTeam1 = JSON.parse(localStorage.getItem('looseMessageTeam1')!);
+  }
+
+  getStorageTeam2() {
+    this.team2 = JSON.parse(localStorage.getItem('team2')!);
+    this.team2Sub = JSON.parse(localStorage.getItem('team2Sub')!);
+    this.errorSelectHero2 = JSON.parse(localStorage.getItem('errorSelectHero2')!);
+    this.isTeam2Touched = JSON.parse(localStorage.getItem('isTeam2Touched')!);
+    this.noMoreSubsTeam2 = JSON.parse(localStorage.getItem('noMoreSubsTeam2')!);
+    this.looseMessageTeam2 = JSON.parse(localStorage.getItem('looseMessageTeam2')!);
+  }
+
   onKillHeroTeam1(name: any, index: number) {
     console.log(`Deleting hero : ${name}`);
 
     if (localStorage.getItem('team1')) {
-      this.team1 = JSON.parse(localStorage.getItem('team1')!);
-      this.team1Sub = JSON.parse(localStorage.getItem('team1Sub')!);
-      this.errorSelectHero1 = JSON.parse(localStorage.getItem('errorSelectHero1')!);
-      this.isTeam1Touched = JSON.parse(localStorage.getItem('isTeam1Touched')!);
-      this.noMoreSubsTeam1 = JSON.parse(localStorage.getItem('noMoreSubsTeam1')!);;
-      this.looseMessageTeam1 = JSON.parse(localStorage.getItem('looseMessageTeam1')!);
+      this.getStorageTeam1();
     } 
 
     this.team1?.splice(index, 1);
@@ -141,24 +156,14 @@ export class TeamsComponent {
     if (!this.team1) return;
     if (this.team1.length < 1 && this.team1Sub.length < 1) this.looseMessageTeam1 = true;
 
-    localStorage.setItem('errorSelectHero1', JSON.stringify(this.errorSelectHero1));
-    localStorage.setItem('isTeam1Touched', JSON.stringify(this.isTeam1Touched));
-    localStorage.setItem('team1', JSON.stringify(this.team1));
-    localStorage.setItem('team1Sub', JSON.stringify(this.team1Sub));
-    localStorage.setItem('noMoreSubsTeam1', JSON.stringify(this.noMoreSubsTeam1));
-    localStorage.setItem('looseMessageTeam1', JSON.stringify(this.looseMessageTeam1));
+    this.setStorageTeam1();
   }
 
   onKillHeroTeam2(name: any, index: number) {
     console.log(`Deleting hero : ${name}`);
 
-    if (localStorage.getItem('team1')) {
-      this.team2 = JSON.parse(localStorage.getItem('team2')!);
-      this.team2Sub = JSON.parse(localStorage.getItem('team2Sub')!);
-      this.errorSelectHero2 = JSON.parse(localStorage.getItem('errorSelectHero2')!);
-      this.isTeam2Touched = JSON.parse(localStorage.getItem('isTeam2Touched')!);
-      this.noMoreSubsTeam2 = JSON.parse(localStorage.getItem('noMoreSubsTeam2')!);
-      this.looseMessageTeam2 = JSON.parse(localStorage.getItem('looseMessageTeam2')!);
+    if (localStorage.getItem('team2')) {
+      this.getStorageTeam2();
     } 
 
     this.team2?.splice(index, 1);
@@ -177,23 +182,13 @@ export class TeamsComponent {
     if (!this.team2) return;
     if (this.team2.length < 1 && this.team2Sub.length < 1) this.looseMessageTeam2 = true;
 
-    localStorage.setItem('errorSelectHero2', JSON.stringify(this.errorSelectHero1));
-    localStorage.setItem('isTeam2Touched', JSON.stringify(this.isTeam1Touched));
-    localStorage.setItem('team2', JSON.stringify(this.team2));
-    localStorage.setItem('team2Sub', JSON.stringify(this.team2Sub));
-    localStorage.setItem('noMoreSubsTeam2', JSON.stringify(this.noMoreSubsTeam2));
-    localStorage.setItem('looseMessageTeam2', JSON.stringify(this.looseMessageTeam2));
+    this.setStorageTeam2();
   }
 
   addHeroOnTeam1() {
 
     if (localStorage.getItem('team1')) {
-      this.team1 = JSON.parse(localStorage.getItem('team1')!);
-      this.team1Sub = JSON.parse(localStorage.getItem('team1Sub')!);
-      this.errorSelectHero1 = JSON.parse(localStorage.getItem('errorSelectHero1')!);
-      this.isTeam1Touched = JSON.parse(localStorage.getItem('isTeam1Touched')!);
-      this.noMoreSubsTeam1 = JSON.parse(localStorage.getItem('noMoreSubsTeam1')!);
-      this.looseMessageTeam1 = JSON.parse(localStorage.getItem('looseMessageTeam1')!);
+      this.getStorageTeam1();
     } 
 
     if (!this.heroSelectForm.valid) {
@@ -220,22 +215,15 @@ export class TeamsComponent {
       heroName: '',
     });
 
-    localStorage.setItem('errorSelectHero1', JSON.stringify(this.errorSelectHero1));
-    localStorage.setItem('isTeam1Touched', JSON.stringify(this.isTeam1Touched));
-    localStorage.setItem('team1', JSON.stringify(this.team1));
-    localStorage.setItem('team1Sub', JSON.stringify(this.team1Sub));
-    localStorage.setItem('noMoreSubsTeam1', JSON.stringify(this.noMoreSubsTeam1));
-    localStorage.setItem('looseMessageTeam1', JSON.stringify(this.looseMessageTeam1));
+    console.log('>>>>touched1', this.isTeam2Touched);
+
+    this.setStorageTeam1();
   }
 
   addHeroOnTeam2() {
 
-    if (localStorage.getItem('team1')) {
-      this.team2 = JSON.parse(localStorage.getItem('team2')!);
-      this.team2Sub = JSON.parse(localStorage.getItem('team2Sub')!);
-      this.errorSelectHero2 = JSON.parse(localStorage.getItem('errorSelectHero2')!);
-      this.isTeam2Touched = JSON.parse(localStorage.getItem('isTeam2Touched')!);
-      this.looseMessageTeam2 = JSON.parse(localStorage.getItem('looseMessageTeam2')!);
+    if (localStorage.getItem('team2')) {
+      this.getStorageTeam2();
     } 
 
     if (!this.heroSelectForm.valid) {
@@ -262,12 +250,9 @@ export class TeamsComponent {
       heroName: '',
     });
 
-    localStorage.setItem('errorSelectHero2', JSON.stringify(this.errorSelectHero1));
-    localStorage.setItem('isTeam2Touched', JSON.stringify(this.isTeam1Touched));
-    localStorage.setItem('team2', JSON.stringify(this.team2));
-    localStorage.setItem('team2Sub', JSON.stringify(this.team2Sub));
-    localStorage.setItem('noMoreSubsTeam2', JSON.stringify(this.noMoreSubsTeam2));
-    localStorage.setItem('looseMessageTeam2', JSON.stringify(this.looseMessageTeam2));
+    console.log('>>>>touched2', this.isTeam2Touched);
+
+    this.setStorageTeam2();
   }
 
   deleteHeroFromSubTeam(idHero: number, teamSub: Hero[]) {
